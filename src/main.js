@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+require('./assets/main.scss')
 /**
  * Load JWT from Local Storage on Refresh.
  */
