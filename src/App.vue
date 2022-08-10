@@ -1,15 +1,32 @@
 <template>
-  <SessionManager />
+  <div v-if="isLoggedIn">
+    <Dashboard />
+  </div>
+  <div v-else>
+    <Login />
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import SessionManager from "./components/SessionManager.vue";
-export default {
-  name: "App",
-  components: {
-    SessionManager,
-  },
-}
+  import SessionManager from "./components/SessionManager.vue";
+  import Login from "./views/Login.vue"
+  import Dashboard from "./views/Dashboard.vue"
+  import Register from "./views/Register.vue"
+  import "@/store/index.js";
+  import { mapActions, mapGetters } from "vuex";
+  export default {
+    name: "App",
+    components: {
+      SessionManager,
+      Login,
+      Dashboard,
+      Register
+    },
+    computed: {
+      ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
+    },
+  }
 </script>
 
 <style>
@@ -17,8 +34,9 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
   }
+  #user-creds-container {
+    margin: 3rem 15rem 10rem 15rem;
+  }
+
 </style>
