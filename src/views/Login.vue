@@ -17,7 +17,10 @@
 
     <div class="control">
       <button class="button is-link" @click="onLogin">Login</button>
+      <router-link to="/Register">Or sign up here</router-link>
     </div>
+
+
 
   </div>
 
@@ -62,7 +65,7 @@ export default {
         this.loginUser(data);
         this.resetData();
     },
-    
+
     resetData() {
       this.signUpEmail = "";
       this.signUpPassword = "";

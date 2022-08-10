@@ -5,12 +5,14 @@
   <div v-else>
     <Login />
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
   import SessionManager from "./components/SessionManager.vue";
   import Login from "./views/Login.vue"
   import Dashboard from "./views/Dashboard.vue"
+  import Register from "./views/Register.vue"
   import "@/store/index.js";
   import { mapActions, mapGetters } from "vuex";
   export default {
@@ -18,7 +20,8 @@
     components: {
       SessionManager,
       Login,
-      Dashboard
+      Dashboard,
+      Register
     },
     computed: {
       ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),

@@ -17,4 +17,4 @@ require('./assets/main.scss')
    }
  }
 
-createApp(App).use(store).mount('#app')
+createApp(App).use(store).use(router).mount('#app')
