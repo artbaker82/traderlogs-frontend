@@ -20,10 +20,7 @@
       <router-link to="/Register">Or sign up here</router-link>
     </div>
 
-
-
   </div>
-
 </template>
 
 <script>
@@ -32,7 +29,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Login",
   computed: {
-    ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
+    // ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
   },
   data() {
     return {
@@ -41,29 +38,17 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["registerUser", "loginUser", "logoutUser"]),
-
-    // onSignUp(event) {
-    //     event.preventDefault();
-    //     let data = {
-    //     user: {
-    //     email: this.signUpEmail,
-    //     password: this.signUpPassword,
-    //   },
-    // };
-    // this.registerUser(data);
-    // this.resetData();
-    // },
+    ...mapActions(["registerUser", "loginUser", "logoutUser", "AUTH_REQUEST"]),
     onLogin(event) {
-        event.preventDefault();
-        let data = {
-          user: {
-              email: this.loginEmail,
-              password: this.loginPassword,
-          },
-        };
-        this.loginUser(data);
-        this.resetData();
+      event.preventDefault();
+      let data = {
+        user: {
+            email: this.loginEmail,
+            password: this.loginPassword,
+        },
+      }
+      this.loginUser(data)
+      this.resetData()
     },
 
     resetData() {

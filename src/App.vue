@@ -1,31 +1,41 @@
 <template>
-  <div v-if="isLoggedIn">
-    <Dashboard />
-  </div>
-  <div v-else>
-    <Login />
-  </div>
+  <NavBar />
   <router-view></router-view>
+  
 </template>
 
 <script>
-  import SessionManager from "./components/SessionManager.vue";
   import Login from "./views/Login.vue"
   import Dashboard from "./views/Dashboard.vue"
   import Register from "./views/Register.vue"
+  import NavBar from "./components/NavBar.vue"
   import "@/store/index.js";
   import { mapActions, mapGetters } from "vuex";
   export default {
     name: "App",
     components: {
-      SessionManager,
       Login,
       Dashboard,
-      Register
+      Register,
+      NavBar
     },
     computed: {
-      ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
+      // ...mapGetters(["isLoggedIn"]),
     },
+    methods: {
+      // ...mapActions(["registerUser", "loginUser", "logoutUser", "checkUserAuth"]),
+    },
+
+
+    // not working
+    mounted() {
+      if (this.isLoggedIn) {
+        this.$router.push('/')
+      } else {
+        console.log('not logged in')
+        this.$router.push('/login')
+      }
+    }
   }
 </script>
 

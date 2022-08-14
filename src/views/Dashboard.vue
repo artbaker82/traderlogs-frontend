@@ -8,7 +8,7 @@
   import { mapActions, mapGetters } from "vuex";
   export default {
     computed: {
-        ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
+        // ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
     },
     data() {
       return {
@@ -19,7 +19,7 @@
       };
     },
     methods: {
-      ...mapActions(["registerUser", "loginUser", "logoutUser"]),
+      // ...mapActions(["registerUser", "loginUser", "logoutUser"]),
     }
   }
 </script>
