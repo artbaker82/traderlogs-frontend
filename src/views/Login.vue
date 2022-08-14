@@ -30,6 +30,14 @@ export default {
   name: "Login",
   computed: {
     // ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/profile");
+    }
   },
   data() {
     return {
@@ -38,19 +46,35 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["registerUser", "loginUser", "logoutUser", "AUTH_REQUEST"]),
-    onLogin(event) {
-      event.preventDefault();
-      let data = {
-        user: {
-            email: this.loginEmail,
-            password: this.loginPassword,
+    ...mapActions(["registerUser", "loginUser", "logoutUser",]),
+    // onLogin(event) {
+    //   event.preventDefault();
+    //   let data = {
+    //     user: {
+    //         email: this.loginEmail,
+    //         password: this.loginPassword,
+    //     },
+    //   }
+    //   this.loginUser(data)
+    //   this.resetData()
+    // },
+    handleLogin(user) {
+      this.loading = true
+      this.$store.dispatch("auth/login", user).then(
+        () => {
+          this.$router.push("/profile");
         },
-      }
-      this.loginUser(data)
-      this.resetData()
+        (error) => {
+          this.loading = false;
+          this.message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+        }
+      )
     },
-
     resetData() {
       this.signUpEmail = "";
       this.signUpPassword = "";
