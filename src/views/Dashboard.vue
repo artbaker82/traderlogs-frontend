@@ -8,18 +8,20 @@
   import { mapActions, mapGetters } from "vuex";
   export default {
     computed: {
-        ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
-    },
-    data() {
-      return {
-        signUpEmail: "",
-        signUpPassword: "",
-        loginEmail: "",
-        loginPassword: "",
-      };
+        // ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
+      loggedIn() {
+        return this.$store.state.auth.status.loggedIn
+      },
     },
     methods: {
-      ...mapActions(["registerUser", "loginUser", "logoutUser"]),
-    }
+      // ...mapActions(["registerUser", "loginUser", "logoutUser"]),
+    },
+    created() {
+      console.log('checking login')
+      if (!this.loggedIn) {
+        console.log('not logged in')
+        this.$router.push("/login")
+      }
+    },
   }
 </script>

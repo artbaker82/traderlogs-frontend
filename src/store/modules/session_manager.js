@@ -9,6 +9,7 @@ const state = {
     username: null,
     email: null,
   },
+  status: ''
 }
 const getters = {
   getAuthToken(state) {
@@ -91,6 +92,7 @@ const actions = {
     })
   },
 }
+
 const mutations = {
   setUserInfo(state, data) {
     state.user = data.data.user

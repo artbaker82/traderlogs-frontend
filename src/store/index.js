@@ -1,5 +1,6 @@
-import { createStore } from "vuex";
-import sessionManager from "@/store/modules/session_manager";
+import { createStore } from "vuex"
+import sessionManager from "@/store/modules/session_manager"
+import { auth } from "@/store/modules/auth"
 
 export default createStore({
   state: {},
@@ -7,5 +8,6 @@ export default createStore({
   actions: {},
   modules: {
     sessionManager,
+    auth
   },
 });
