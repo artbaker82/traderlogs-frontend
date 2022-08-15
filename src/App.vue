@@ -28,14 +28,14 @@
 
 
     // not working
-    mounted() {
-      if (this.isLoggedIn) {
-        this.$router.push('/')
-      } else {
-        console.log('not logged in')
-        this.$router.push('/login')
-      }
-    }
+    // mounted() {
+    //   if (this.isLoggedIn) {
+    //     this.$router.push('/')
+    //   } else {
+    //     console.log('not logged in')
+    //     this.$router.push('/login')
+    //   }
+    // }
   }
 </script>
 

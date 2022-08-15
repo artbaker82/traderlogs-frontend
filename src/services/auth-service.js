@@ -7,6 +7,7 @@ class AuthService {
       .then(response => {
         if (response.headers.authorization) {
           //check what response is and set user object accordingly
+          console.log(response)
           localStorage.setItem('user', JSON.stringify(response.data));
         }
         return response.data;
@@ -16,6 +17,7 @@ class AuthService {
     localStorage.removeItem('user');
   }
   register(user) {
+    //change this
     return axios.post(API_URL + 'users', {
       username: user.username,
       email: user.email,

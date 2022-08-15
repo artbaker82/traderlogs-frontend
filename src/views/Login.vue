@@ -16,7 +16,7 @@
     </div>
 
     <div class="control">
-      <button class="button is-link" @click="onLogin">Login</button>
+      <button class="button is-link" @click="handleLogin">Login</button>
       <router-link to="/Register">Or sign up here</router-link>
     </div>
 
@@ -31,12 +31,14 @@ export default {
   computed: {
     // ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
     loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
+      return this.$store.state.auth.status.loggedIn
     },
   },
   created() {
+    console.log('checking login')
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      console.log('logged in')
+      this.$router.push("/")
     }
   },
   data() {
@@ -46,7 +48,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["registerUser", "loginUser", "logoutUser",]),
+    // ...mapActions(["registerUser", "loginUser", "logoutUser",]),
     // onLogin(event) {
     //   event.preventDefault();
     //   let data = {
@@ -58,11 +60,18 @@ export default {
     //   this.loginUser(data)
     //   this.resetData()
     // },
-    handleLogin(user) {
+    handleLogin() {
       this.loading = true
+      const user = {
+        user: {
+          email: this.loginEmail,
+          password: this.loginPassword,
+        }
+      }
+      console.log(user)
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/profile");
+          this.$router.push("/")
         },
         (error) => {
           this.loading = false;

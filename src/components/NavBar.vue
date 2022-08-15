@@ -45,12 +45,22 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <router-link to="/register" class="button is-primary">
-              <strong>Sign up</strong>
-            </router-link>
-            <router-link to="/login" class="button is-light">
-              Log in
-            </router-link>
+
+            <div v-if="!loggedIn">
+              <router-link to="/register" class="button is-primary">
+                <strong>Sign up</strong>
+              </router-link>
+              <router-link to="/login" class="button is-light">
+                <strong>Log in</strong>
+              </router-link>
+            </div>
+
+            <div v-if="loggedIn">
+              <button @click="handleLogout" class="button is-light">
+                Log out
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -62,7 +72,21 @@
 </template>
 
 <script>
-export default {
-  name: 'NavBar'
+  import "@/store/index.js"
+  export default {
+    name: 'NavBar',
+    computed: {
+      //TODO REFACTOR THIS TO STORE GETTER
+      loggedIn() {
+        return this.$store.state.auth.status.loggedIn
+      },
+    },
+    methods: {
+      handleLogout() {
+        this.$store.dispatch('auth/logout').then(() => {
+          this.$router.push("/login")
+        })
+      }
+    }
 }
 </script>
