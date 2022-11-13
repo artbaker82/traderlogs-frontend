@@ -25,17 +25,14 @@
 
 <script>
 import "@/store/index.js";
-import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Login",
   computed: {
-    // ...mapGetters(["getAuthToken", "getUserEmail", "getUserID", "isLoggedIn"]),
     loggedIn() {
       return this.$store.state.auth.status.loggedIn
     },
   },
   created() {
-    console.log('checking login')
     if (this.loggedIn) {
       console.log('logged in')
       this.$router.push("/")
@@ -48,18 +45,6 @@ export default {
     }
   },
   methods: {
-    // ...mapActions(["registerUser", "loginUser", "logoutUser",]),
-    // onLogin(event) {
-    //   event.preventDefault();
-    //   let data = {
-    //     user: {
-    //         email: this.loginEmail,
-    //         password: this.loginPassword,
-    //     },
-    //   }
-    //   this.loginUser(data)
-    //   this.resetData()
-    // },
     handleLogin() {
       this.loading = true
       const user = {
@@ -68,7 +53,6 @@ export default {
           password: this.loginPassword,
         }
       }
-      console.log(user)
       this.$store.dispatch("auth/login", user).then(
         () => {
           this.$router.push("/")

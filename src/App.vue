@@ -1,7 +1,6 @@
 <template>
   <NavBar />
   <router-view></router-view>
-  
 </template>
 
 <script>
@@ -9,8 +8,7 @@
   import Dashboard from "./views/Dashboard.vue"
   import Register from "./views/Register.vue"
   import NavBar from "./components/NavBar.vue"
-  import "@/store/index.js";
-  import { mapActions, mapGetters } from "vuex";
+  import "@/store/index.js"
   export default {
     name: "App",
     components: {
@@ -18,24 +16,7 @@
       Dashboard,
       Register,
       NavBar
-    },
-    computed: {
-      // ...mapGetters(["isLoggedIn"]),
-    },
-    methods: {
-      // ...mapActions(["registerUser", "loginUser", "logoutUser", "checkUserAuth"]),
-    },
-
-
-    // not working
-    // mounted() {
-    //   if (this.isLoggedIn) {
-    //     this.$router.push('/')
-    //   } else {
-    //     console.log('not logged in')
-    //     this.$router.push('/login')
-    //   }
-    // }
+    }
   }
 </script>
 
