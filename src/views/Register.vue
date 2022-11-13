@@ -1,31 +1,33 @@
 <template>
-    <div id="user-creds-container">
+    <div class="container is-fluid">
+      <div class="user-creds-container">
 
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control">
-          <input v-model="loginEmail" class="input" type="text" placeholder="email@email.com">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input v-model="loginEmail" class="input" type="text" placeholder="email@email.com">
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-          <input v-model="loginPassword" class="input" type="password" placeholder="Text input">
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input v-model="loginPassword" class="input" type="password" placeholder="Text input">
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Password Confirmation</label>
-        <div class="control">
-          <input v-model="loginPasswordConfirmation" class="input" type="password" placeholder="Text input">
+        <div class="field">
+          <label class="label">Password Confirmation</label>
+          <div class="control">
+            <input v-model="loginPasswordConfirmation" class="input" type="password" placeholder="Text input">
+          </div>
         </div>
-      </div>
 
-      <div class="control">
-        <button class="button is-link" @click="handleRegistration">Create Account</button>
-        <router-link to="/Login">Already have an account?</router-link>
-      </div>
+        <div class="control">
+          <button class="button is-link" @click="handleRegistration">Create Account</button>
+          <router-link to="/Login">Already have an account?</router-link>
+        </div>
+    </div>
   </div>
 </template>
 

@@ -1,3 +1,16 @@
 //example of custom bulma elements
 // $primary: blue
 @import "~bulma/bulma";
+
+$breakpoint: 930px;
+$large-breakpoint: 1200px;
+
+.user-creds-container {
+  @include from($breakpoint) {
+    margin: 3rem 15rem 10rem 15rem;
+  }
+
+  @include from($large-breakpoint) {
+    margin: 3rem 20rem 10rem 20rem;
+  }
+}

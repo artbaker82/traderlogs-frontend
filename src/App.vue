@@ -26,8 +26,4 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  #user-creds-container {
-    margin: 3rem 15rem 10rem 15rem;
-  }
-
 </style>
