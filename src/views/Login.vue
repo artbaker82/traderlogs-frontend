@@ -1,5 +1,6 @@
 <template>
-  <div id="user-creds-container">
+  <div class="container is-fluid">
+    <div class="user-creds-container">
 
     <div class="field">
       <label class="label">Email</label>
@@ -19,7 +20,7 @@
       <button class="button is-link" @click="handleLogin">Login</button>
       <router-link to="/Register">Or sign up here</router-link>
     </div>
-
+  </div>
   </div>
 </template>
 
