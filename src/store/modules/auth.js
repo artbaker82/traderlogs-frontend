@@ -23,19 +23,19 @@ export const auth = {
     },
 
     logout({ commit }) {
-      AuthService.logout();
-      commit('logout');
+      AuthService.logout()
+      commit('logout')
     },
 
     register({ commit }, user) {
       return AuthService.register(user).then(
         response => {
           commit('registerSuccess');
-          return Promise.resolve(response.data);
+          return Promise.resolve(response.data)
         },
         error => {
-          commit('registerFailure');
-          return Promise.reject(error);
+          commit('registerFailure')
+          return Promise.reject(error)
         }
       );
     }
@@ -43,15 +43,15 @@ export const auth = {
 
   mutations: {
     loginSuccess(state, user) {
-      state.status.loggedIn = true;
+      state.status.loggedIn = true
       state.user = user
     },
     loginFailure(state) {
-      state.status.loggedIn = false;
+      state.status.loggedIn = false
       state.user = null
     },
     logout(state) {
-      state.status.loggedIn = false;
+      state.status.loggedIn = false
       state.user = null
     },
     registerSuccess(state) {
