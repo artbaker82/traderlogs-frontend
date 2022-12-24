@@ -1,4 +1,5 @@
 import axios from 'axios'
+import authHeader from './auth-header'
 const API_URL = 'http://localhost:3000/'
 class AuthService {
   login(user) {
@@ -6,13 +7,26 @@ class AuthService {
       .post(API_URL + 'users/sign_in', user)
       .then(response => {
         if (response.headers.authorization) {
-          localStorage.setItem('user', JSON.stringify(response.data))
+          user = {
+            ...response.data,
+            authToken: response.headers.authorization
+          }
+          localStorage.setItem('user', JSON.stringify(user))
         }
-        return response.data
-      })
+      return response.data
+    })
   }
   logout() {
-    localStorage.removeItem('user')
+    return axios
+      .delete(API_URL + 'users/sign_out', { headers: authHeader() })
+      .then(response => {
+        if (response.status == 200) {
+          localStorage.removeItem('user')
+          return response.data
+        } else {
+          console.log(response)
+        }
+    })
   }
   register(user) {
     return axios
